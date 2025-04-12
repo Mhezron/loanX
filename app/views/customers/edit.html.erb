@@ -1,0 +1,43 @@
+<div class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
+  <h2 class="text-2xl font-semibold text-gray-800 mb-4">Edit Customer Details</h2>
+
+  <% if flash[:notice] %>
+    <div class="mb-4 p-4 bg-green-100 text-green-800 rounded-lg">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <%= form_with model: @customer, local: true, class: "bg-white shadow-md rounded-lg p-6" do |form| %>
+    <div class="mb-4">
+      <%= form.label :first_name, "First Name", class: "block text-gray-700 font-medium mb-1" %>
+      <%= form.text_field :first_name, class: "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :last_name, "Last Name", class: "block text-gray-700 font-medium mb-1" %>
+      <%= form.text_field :last_name, class: "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :id_number, "ID Number", class: "block text-gray-700 font-medium mb-1" %>
+      <%= form.text_field :id_number, class: "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :phone_number, "Phone Number", class: "block text-gray-700 font-medium mb-1" %>
+      <%= form.text_field :phone_number, class: "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :dob, "Date of Birth", class: "block text-gray-700 font-medium mb-1" %>
+      <%= form.date_field :dob, class: "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <div class="flex items-center justify-between mt-4">
+      <%= form.submit "Update Customer", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md" %>
+      <%= link_to "Cancel", customer_path(@customer), class: "text-gray-600 hover:text-red-500 font-medium" %>
+    </div>
+
+  <% end %>
+</div>
+

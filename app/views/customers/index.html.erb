@@ -1,0 +1,91 @@
+<div>
+
+<div>
+  <%= link_to 'New Customer', new_customer_path, class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+</div>
+
+<div id="customers" class="mt-4 py-4">
+  <% if @customers.any? %>
+    <% @customers.each do |customer| %>
+      <div class="p-4 border-b">
+        <%= link_to "#{customer.first_name} #{customer.last_name}", customer_path(customer), class: "text-blue-600 hover:underline" %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No customers found.</p>
+  <% end %>
+</div>
+
+
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Customer name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Id Number
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Phone Number
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Loan Amount
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Interest
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Repayment Amount
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Phone (collateral)
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Status
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <span class="sr-only">Edit</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+<% @customers.each do |customer| %>
+
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <%= link_to "#{customer.first_name} #{customer.last_name}", customer_path(customer)%>
+                </th>
+                <td class="px-6 py-4">
+                    Silver
+                </td>
+                <td class="px-6 py-4">
+                    Laptop
+                </td>
+                <td class="px-6 py-4">
+                    $2999
+                </td>
+                  <td class="px-6 py-4">
+                    Silver
+                </td>
+                <td class="px-6 py-4">
+                    Laptop
+                </td>
+                <td class="px-6 py-4">
+                    $2999
+                </td>
+                <td class="px-6 py-4">
+                    $2999
+                </td>
+                <td class="px-6 py-4 text-right">
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+
+</div>

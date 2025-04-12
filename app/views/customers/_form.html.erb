@@ -1,0 +1,70 @@
+<%= form_with model: @customer, local: true, class: "max-w-lg mx-auto bg-white shadow-md rounded-lg p-6" do |form| %>
+  <h2 class="text-2xl font-semibold text-gray-800 mb-4">Add New Customer</h2>
+
+  <% if flash[:notice] %>
+    <div class="mb-4 p-4 bg-green-100 text-green-800 rounded-lg">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <!-- Customer Fields -->
+  <div class="mb-4">
+    <%= form.label :first_name, class: "block text-gray-700 font-medium mb-1" %>
+    <%= form.text_field :first_name, class: "w-full p-2 border border-gray-300 rounded-lg" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :last_name, class: "block text-gray-700 font-medium mb-1" %>
+    <%= form.text_field :last_name, class: "w-full p-2 border border-gray-300 rounded-lg" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :id_number, class: "block text-gray-700 font-medium mb-1" %>
+    <%= form.text_field :id_number, class: "w-full p-2 border border-gray-300 rounded-lg" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :phone_number, class: "block text-gray-700 font-medium mb-1" %>
+    <%= form.text_field :phone_number, class: "w-full p-2 border border-gray-300 rounded-lg" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :dob, class: "block text-gray-700 font-medium mb-1" %>
+    <%= form.date_field :dob, class: "w-full p-2 border border-gray-300 rounded-lg" %>
+  </div>
+
+  <hr class="h-px my-8 bg-gray-200 border-0">
+
+  <!-- Loan Fields -->
+  <%= form.fields_for :loans do |loan_fields| %>
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Loan Details</h2>
+
+    <div class="mb-4">
+      <%= loan_fields.label :loan_amount, class: "block text-gray-700 font-medium mb-1" %>
+      <%= loan_fields.text_field :loan_amount, class: "w-full p-2 border border-gray-300 rounded-lg" %>
+    </div>
+
+    <hr class="h-px my-8 bg-gray-200 border-0">
+
+    <!-- Phone Fields -->
+    <%= loan_fields.fields_for :phone do |phone_fields| %>
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Phone Details</h2>
+
+      <div class="mb-4">
+        <%= phone_fields.label :phone_make, class: "block text-gray-700 font-medium mb-1" %>
+        <%= phone_fields.text_field :phone_make, class: "w-full p-2 border border-gray-300 rounded-lg" %>
+      </div>
+
+      <div class="mb-4">
+        <%= phone_fields.label :phone_model, class: "block text-gray-700 font-medium mb-1" %>
+        <%= phone_fields.text_field :phone_model, class: "w-full p-2 border border-gray-300 rounded-lg" %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <!-- Submit Button -->
+  <div class="flex items-center justify-between mt-6">
+    <%= form.submit "Save Customer", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md" %>
+    <%= link_to "Cancel", customers_path, class: "text-gray-600 hover:text-red-500 font-medium" %>
+  </div>
+<% end %>
