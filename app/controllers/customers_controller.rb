@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  allow_unauthenticated_access except: [:new, :edit, :update, :destroy ]
 
 
   def index
